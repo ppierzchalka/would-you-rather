@@ -1,0 +1,29 @@
+{
+    "extends": ["tslint-config-standard"],
+    "rules": {
+        "jsdoc-format": false,
+        "strict-type-predicates": false,
+        "no-use-before-declare": false,
+        "member-ordering": false,
+        "no-unnecessary-qualifier": false,
+        "no-unused-variable": false,
+        "ordered-imports": true,
+        "arrow-return-shorthand": true,
+        "import-spacing": true,
+        "no-debugger": true,
+        "no-console": true,
+        "no-eval": true,
+        "no-duplicate-super": true,
+        "no-empty": false,
+        "no-empty-interface": true,
+        "no-switch-case-fall-through": true,
+        "no-unused-expression": true,
+        "prefer-const": true,
+        "quotemark": [true, "single", "jsx-double"],
+        "triple-equals": [true, "allow-null-check"],
+        "indent": [true, "spaces", 4],
+        "ter-indent": false,
+        "space-before-function-paren": false,
+        "semicolon":false
+    }
+}
