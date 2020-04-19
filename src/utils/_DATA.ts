@@ -1,38 +1,35 @@
 export type User = {
-    id: string;
+    id: userId;
     name: string;
     avatarURL: string;
-    answers: Record<string, string>;
+    answers: Record<string, SelectedOption>;
     questions: string[];
-};
-
-export type Option = {
-    votes: string[];
-    text: string;
-};
-
-export type RawQuestion = {
-    optionOneText: string;
-    optionTwoText: string;
-    author: string;
 };
 
 export type Question = {
     id: string;
-    author: string;
+    author: userId;
     timestamp: number;
     optionOne: Option;
     optionTwo: Option;
 };
 
-export type Users = Record<string, User>;
+export type Users = Record<userId, User>;
 export type Questions = Record<string, Question>;
+
+export type Option = {
+    votes: userId[];
+    text: string;
+};
+
+export type SelectedOption = 'optionOne' | 'optionTwo';
+export type userId = 'sarahedo' | 'tylermcginnis' | 'johndoe';
 
 let users: Users = {
     sarahedo: {
         id: 'sarahedo',
         name: 'Sarah Edo',
-        avatarURL: '',
+        avatarURL: 'avatars/img24.png',
         answers: {
             '8xf0y6ziyjabvozdd253nd': 'optionOne',
             '6ni6ok3ym7mf1p33lnez': 'optionTwo',
@@ -44,7 +41,7 @@ let users: Users = {
     tylermcginnis: {
         id: 'tylermcginnis',
         name: 'Tyler McGinnis',
-        avatarURL: '',
+        avatarURL: 'avatars/img27.png',
         answers: {
             vthrdm985a262al8qx3do: 'optionOne',
             xj352vofupe1dqz9emx13r: 'optionTwo'
@@ -54,7 +51,7 @@ let users: Users = {
     johndoe: {
         id: 'johndoe',
         name: 'John Doe',
-        avatarURL: '',
+        avatarURL: 'avatars/img17.png',
         answers: {
             xj352vofupe1dqz9emx13r: 'optionOne',
             vthrdm985a262al8qx3do: 'optionTwo',
@@ -64,7 +61,7 @@ let users: Users = {
     }
 };
 
-let questions = {
+let questions: Questions = {
     '8xf0y6ziyjabvozdd253nd': {
         id: '8xf0y6ziyjabvozdd253nd',
         author: 'sarahedo',
@@ -153,22 +150,28 @@ function generateUID(): string {
 }
 
 export function _getUsers(): Promise<Users> {
-    return new Promise((res, rej) => {
+    return new Promise((res, _rej) => {
         setTimeout(() => res({ ...users }), 1000);
     });
 }
 
 export function _getQuestions(): Promise<Questions> {
-    return new Promise((res, rej) => {
+    return new Promise((res, _rej) => {
         setTimeout(() => res({ ...questions }), 1000);
     });
 }
+
+type QuestionData = {
+    optionOneText: string;
+    optionTwoText: string;
+    author: userId;
+};
 
 function formatQuestion({
     optionOneText,
     optionTwoText,
     author
-}: RawQuestion): Question {
+}: QuestionData): Question {
     return {
         id: generateUID(),
         timestamp: Date.now(),
@@ -184,7 +187,7 @@ function formatQuestion({
     };
 }
 
-export function _saveQuestion(question: RawQuestion): Promise<Question> {
+export function _saveQuestion(question: QuestionData): Promise<Question> {
     return new Promise((res, _rej) => {
         const authedUser = question.author;
         const formattedQuestion = formatQuestion(question);
@@ -210,7 +213,17 @@ export function _saveQuestion(question: RawQuestion): Promise<Question> {
     });
 }
 
-export function _saveQuestionAnswer({ authedUser, qid, answer }): Promise<never> {
+export type SelectedAnswer = {
+    authedUser: userId;
+    qid: string;
+    answer: SelectedOption;
+};
+
+export function _saveQuestionAnswer({
+    authedUser,
+    qid,
+    answer
+}: SelectedAnswer): Promise<never> {
     return new Promise((res, _rej) => {
         setTimeout(() => {
             users = {

@@ -1,21 +1,24 @@
-import React from 'react';
+import { Container } from '@material-ui/core';
+import React, { Fragment } from 'react';
+import { Header } from './components/Header/Header';
+import { UserLogin } from './components/UserLogin/UserLogin';
+import './styles/css/index.css';
+import { User } from './utils/_DATA';
 
-export function App() {
+export type AppProps = {
+    user?: User;
+}
+
+export const App: React.FC<AppProps> = ({ user }) => {
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-        </a>
-            </header>
-        </div>
-    );
+        <Fragment>
+            <Header />
+            <Container maxWidth="md">
+                {user
+                    ? <p>app</p>
+                    : <UserLogin />
+                }
+            </Container>
+        </Fragment>
+    )
 }

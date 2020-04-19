@@ -1,0 +1,58 @@
+.user-login {
+    margin: 25px;
+    .user-login__header-container {
+        padding: 15px 20px;
+        .user-login__primary {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px 10px;
+            .user-login__title {
+                display: block;
+                font-family: 'Pacifico', cursive;
+                font-weight: bold;
+                font-size: 3rem;
+                padding: 15px;
+            }
+        }
+        .user-login__secondary {
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+    .user-login__body-container {
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .user-login__select-wrapper {
+            min-width: 400px;
+            width: 80%;
+            .user-login__select {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .user-login__avatar {
+                    padding: 0 5px 0 0;
+                    height: 18px;
+                    width: 18px;
+                }
+            }
+        }
+        .user-login__sign-in {
+            margin: 15px;
+        }
+        .user-login__sign-in-label {
+            padding: 5px 10px;
+        }
+    }
+}
+    .user-login__option {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .user-login__avatar {
+            padding: 0 5px 0 0;
+        }
+    }

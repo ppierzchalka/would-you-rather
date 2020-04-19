@@ -1,0 +1,13 @@
+.app-bar {
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    .app-bar__user {
+        margin: 0px 5px;
+        display: flex;
+        align-items: center;
+        .app-bar__avatar {
+            margin: 0px 10px;
+        }
+    }
+}

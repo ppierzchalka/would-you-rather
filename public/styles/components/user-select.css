@@ -1,0 +1,12 @@
+.user-select__header-container {
+  padding: 5px 10px; }
+
+.user-select__primary {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 10px; }
+
+.user-select__secondary {
+  font-size: 18px;
+  text-align: center; }
