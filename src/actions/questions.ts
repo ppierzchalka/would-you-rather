@@ -14,17 +14,17 @@ export enum QuestionsActionType {
     RemoveAnswer = 'RemoveAnswer',
 }
 
-type ReceiveQuestionsAction = {
+export type ReceiveQuestionsAction = {
     type: QuestionsActionType.ReceiveQuestions;
     questions: Questions;
 };
 
-type AddQuestionAction = {
+export type AddQuestionAction = {
     type: QuestionsActionType.AddQuestion;
     question: Question;
 };
 
-type AnswerAction = {
+export type AnswerAction = {
     type: QuestionsActionType.SelectAnswer | QuestionsActionType.RemoveAnswer;
     selectedAnswer: SelectedAnswer;
 };

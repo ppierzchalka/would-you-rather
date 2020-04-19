@@ -1,26 +1,27 @@
 import { Avatar, Button, Container, Divider, FormControl, InputLabel, MenuItem, Paper, Select, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
-import { User } from '../../utils/_DATA';
+import React, { Dispatch, useState } from 'react';
+import { connect } from 'react-redux';
+import { selectAuthUser } from '../../actions/authUser';
+import { Users } from '../../utils/_DATA';
 
-const userData: User = {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: 'avatars/img24.png',
-    answers: {
-        '8xf0y6ziyjabvozdd253nd': 'optionOne',
-        '6ni6ok3ym7mf1p33lnez': 'optionTwo',
-        am8ehyc8byjqgar0jgpub9: 'optionTwo',
-        loxhs1bqm25b708cmbf3g: 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+export type UserLoginInnerProps = {
+    users: Users;
+    authUser: string;
+    dispatch: Dispatch<any>;
 }
 
-export const UserLogin: React.FC = () => {
-    const [user, setUser] = useState<string>();
+export const UserLoginInner: React.FC<UserLoginInnerProps> = ({ users, dispatch, authUser }) => {
+    const [user, setUser] = useState<string | null>(authUser);
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         const value = e.target.value;
         setUser(value as string);
+    }
+
+    const onSignIn = () => {
+        if (user) {
+            dispatch(selectAuthUser(user));
+        }
     }
 
     return (
@@ -49,20 +50,24 @@ export const UserLogin: React.FC = () => {
                             onChange={handleChange}
                             label="Select User"
                         >
-                            <MenuItem
-                                value={userData.id}
-                                classes={{ root: 'user-login__option' }}
-                            >
-                                <Avatar
-                                    classes={{ root: 'user-login__avatar' }}
-                                    alt={userData.name}
-                                    src={userData.avatarURL}
-                                />
-                                {userData.name}
-                            </MenuItem>
+                            {Object.entries(users).map(([key, user]) => (
+                                <MenuItem
+                                    key={key}
+                                    value={user.id}
+                                    classes={{ root: 'user-login__option' }}
+                                >
+                                    <Avatar
+                                        classes={{ root: 'user-login__avatar' }}
+                                        alt={user.name}
+                                        src={user.avatarURL}
+                                    />
+                                    {user.name}
+                                </MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                     <Button
+                        onClick={onSignIn}
                         variant="contained"
                         color="primary"
                         classes={{
@@ -77,3 +82,10 @@ export const UserLogin: React.FC = () => {
         </Container>
     )
 }
+
+const mapStateToProps = (state: { users: Users; authUser: string; }) => ({
+    users: state.users,
+    authUser: state.authUser
+})
+
+export const UserLogin = connect(mapStateToProps)(UserLoginInner)

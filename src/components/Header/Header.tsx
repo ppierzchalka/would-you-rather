@@ -1,45 +1,51 @@
 import { AppBar, Toolbar } from '@material-ui/core';
 import { Create, ExitToApp, Home, List } from '@material-ui/icons';
 import React from 'react';
-import { User } from '../../utils/_DATA';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeAuthUser } from '../../actions/authUser';
+import { RootStateType } from '../../reducers';
 import { ButtonType, NavButton } from './NavButton';
 import { UserAvatar } from './UserAvatar';
 
-export type HeaderProps = {
-    user?: User
-}
+export const Header: React.FC = () => {
+    const dispatch = useDispatch();
+    const authUserData = useSelector((state: RootStateType) => {
+        const authUser = state.authUser;
+        return authUser ? state.users[authUser] : null;
+    });
 
-export const Header: React.FC<HeaderProps> = ({ user }) => {
+    const handleLogout = () => dispatch(removeAuthUser());
+
     return (
         <AppBar position="static" classes={{ root: 'app-bar' }}>
             <Toolbar>
-                <UserAvatar user={user} />
+                <UserAvatar authUser={authUserData} />
                 {
-                    user && <div className={'app-bar__menu'}>
-                    <NavButton
-                        type={ButtonType.Link}
-                        path="/"
-                        icon={<Home />}
-                        label="Home"
-                    />
-                    <NavButton
-                        type={ButtonType.Link}
-                        path="/add"
-                        icon={<Create />}
-                        label="New Question"
-                    />
-                    <NavButton
-                        type={ButtonType.Link}
-                        path="/leaderboard"
-                        icon={<List />}
-                        label="Leader Board"
-                    />
-                    <NavButton
-                        type={ButtonType.Action}
-                        onClick={console.log}
-                        icon={<ExitToApp />}
-                        label="Logout"
-                    />
+                    authUserData && <div className={'app-bar__menu'}>
+                        <NavButton
+                            type={ButtonType.Link}
+                            path="/"
+                            icon={<Home />}
+                            label="Home"
+                        />
+                        <NavButton
+                            type={ButtonType.Link}
+                            path="/add"
+                            icon={<Create />}
+                            label="New Question"
+                        />
+                        <NavButton
+                            type={ButtonType.Link}
+                            path="/leaderboard"
+                            icon={<List />}
+                            label="Leader Board"
+                        />
+                        <NavButton
+                            type={ButtonType.Action}
+                            onClick={handleLogout}
+                            icon={<ExitToApp />}
+                            label="Logout"
+                        />
                     </div>
                 }
             </Toolbar>

@@ -1,24 +1,39 @@
 import { Container } from '@material-ui/core';
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { handleInitialData } from './actions/shared';
 import { Header } from './components/Header/Header';
 import { UserLogin } from './components/UserLogin/UserLogin';
 import './styles/css/index.css';
-import { User } from './utils/_DATA';
 
 export type AppProps = {
-    user?: User;
+    authUser: string | null;
+    dispatch: Dispatch<any>;
 }
 
-export const App: React.FC<AppProps> = ({ user }) => {
-    return (
-        <Fragment>
-            <Header />
-            <Container maxWidth="md">
-                {user
-                    ? <p>app</p>
-                    : <UserLogin />
-                }
-            </Container>
-        </Fragment>
-    )
+export class AppInner extends Component<AppProps> {
+    componentDidMount() {
+        this.props.dispatch(handleInitialData());
+    }
+
+    render() {
+        return (
+            <Fragment>
+                <Header />
+                <Container maxWidth="md">
+                    {this.props.authUser
+                        ? <p>app</p>
+                        : <UserLogin />
+                    }
+                </Container>
+            </Fragment>
+        )
+    }
 }
+
+const mapStateToProps = (state: { authUser: string; }) => ({
+    authUser: state.authUser
+})
+
+export const App = connect(mapStateToProps)(AppInner);
