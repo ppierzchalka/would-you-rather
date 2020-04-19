@@ -2,6 +2,8 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center; }
+  .app-bar a {
+    text-decoration: none; }
   .app-bar .app-bar__user {
     margin: 0px 5px;
     display: flex;
