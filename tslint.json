@@ -24,6 +24,7 @@
         "indent": [true, "spaces", 4],
         "ter-indent": false,
         "space-before-function-paren": false,
-        "semicolon":false
+        "semicolon":false,
+        "trailing-comma": false
     }
 }

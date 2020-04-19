@@ -1,5 +1,7 @@
+import { formatQuestion } from './helpers';
+
 export type User = {
-    id: userId;
+    id: string;
     name: string;
     avatarURL: string;
     answers: Record<string, SelectedOption>;
@@ -8,22 +10,33 @@ export type User = {
 
 export type Question = {
     id: string;
-    author: userId;
+    author: string;
     timestamp: number;
     optionOne: Option;
     optionTwo: Option;
 };
 
-export type Users = Record<userId, User>;
+export type Users = Record<string, User>;
 export type Questions = Record<string, Question>;
 
 export type Option = {
-    votes: userId[];
+    votes: string[];
     text: string;
 };
 
 export type SelectedOption = 'optionOne' | 'optionTwo';
-export type userId = 'sarahedo' | 'tylermcginnis' | 'johndoe';
+
+export type QuestionData = {
+    optionOneText: string;
+    optionTwoText: string;
+    author: string;
+};
+
+export type SelectedAnswer = {
+    authedUser: string;
+    qid: string;
+    answer: SelectedOption;
+};
 
 let users: Users = {
     sarahedo: {
@@ -142,13 +155,6 @@ let questions: Questions = {
     }
 };
 
-function generateUID(): string {
-    return (
-        Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15)
-    );
-}
-
 export function _getUsers(): Promise<Users> {
     return new Promise((res, _rej) => {
         setTimeout(() => res({ ...users }), 1000);
@@ -159,32 +165,6 @@ export function _getQuestions(): Promise<Questions> {
     return new Promise((res, _rej) => {
         setTimeout(() => res({ ...questions }), 1000);
     });
-}
-
-type QuestionData = {
-    optionOneText: string;
-    optionTwoText: string;
-    author: userId;
-};
-
-function formatQuestion({
-    optionOneText,
-    optionTwoText,
-    author
-}: QuestionData): Question {
-    return {
-        id: generateUID(),
-        timestamp: Date.now(),
-        author,
-        optionOne: {
-            votes: [],
-            text: optionOneText
-        },
-        optionTwo: {
-            votes: [],
-            text: optionTwoText
-        }
-    };
 }
 
 export function _saveQuestion(question: QuestionData): Promise<Question> {
@@ -212,12 +192,6 @@ export function _saveQuestion(question: QuestionData): Promise<Question> {
         }, 1000);
     });
 }
-
-export type SelectedAnswer = {
-    authedUser: userId;
-    qid: string;
-    answer: SelectedOption;
-};
 
 export function _saveQuestionAnswer({
     authedUser,
