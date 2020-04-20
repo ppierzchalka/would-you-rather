@@ -1,0 +1,34 @@
+.question-form__header-container {
+    padding: 15px 20px;
+    .question-form__header {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px 10px;
+    }
+}
+.question-form__question-container {
+    padding: 15px 20px;
+    .question-form__question {
+        text-align: center;
+        display: block;
+        font-family: 'Pacifico', cursive;
+        font-weight: bold;
+        font-size: 2rem;
+        padding: 15px;
+    }
+}
+.question-form__body {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .question-form__submit {
+        margin: 15px;
+    }
+    .question-form__submit-label {
+        padding: 5px 10px;
+    }
+}
