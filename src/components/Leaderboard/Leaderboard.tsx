@@ -15,7 +15,7 @@ export const Leaderboard: React.FC = () => {
     }, [usersData])
 
     return (
-        <div className={'leaderboard__wrapper'}>
+        <React.Fragment>
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
@@ -34,6 +34,6 @@ export const Leaderboard: React.FC = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div >
+        </React.Fragment>
     )
 }

@@ -1,6 +1,4 @@
-.leaderboard__wrapper {
-    margin: 25px;
-    .leaderboard-table__user-data {
+.leaderboard-table__user-data {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -10,4 +8,3 @@
             padding: 0 15px 0 0;
         }
     }
-}

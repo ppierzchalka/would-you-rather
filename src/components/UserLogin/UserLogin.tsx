@@ -25,7 +25,7 @@ export const UserLoginInner: React.FC<UserLoginInnerProps> = ({ users, dispatch,
     }
 
     return (
-        <Container maxWidth="sm" classes={{ root: 'user-login' }}>
+        <Container maxWidth="sm" classes={{ root: 'user-login main__wrapper' }}>
             <Paper variant="outlined" elevation={3}>
                 <div className="user-login__header-container">
                     <Typography variant="h1" display="block" classes={{ root: 'user-login__primary' }}>

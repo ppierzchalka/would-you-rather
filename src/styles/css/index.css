@@ -11,45 +11,47 @@
     .app-bar .app-bar__user .app-bar__avatar {
       margin: 0px 10px; }
 
-.user-login {
+.main__wrapper {
   margin: 25px; }
-  .user-login .user-login__header-container {
-    padding: 15px 20px; }
-    .user-login .user-login__header-container .user-login__primary {
-      font-size: 25px;
+
+.user-login .user-login__header-container {
+  padding: 15px 20px; }
+  .user-login .user-login__header-container .user-login__primary {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px; }
+    .user-login .user-login__header-container .user-login__primary .user-login__title {
+      display: block;
+      font-family: 'Pacifico', cursive;
       font-weight: bold;
-      text-align: center;
-      padding: 5px 10px; }
-      .user-login .user-login__header-container .user-login__primary .user-login__title {
-        display: block;
-        font-family: 'Pacifico', cursive;
-        font-weight: bold;
-        font-size: 3rem;
-        padding: 15px; }
-    .user-login .user-login__header-container .user-login__secondary {
-      font-size: 18px;
-      text-align: center; }
-  .user-login .user-login__body-container {
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; }
-    .user-login .user-login__body-container .user-login__select-wrapper {
-      min-width: 400px;
-      width: 80%; }
-      .user-login .user-login__body-container .user-login__select-wrapper .user-login__select {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center; }
-        .user-login .user-login__body-container .user-login__select-wrapper .user-login__select .user-login__avatar {
-          padding: 0 5px 0 0;
-          height: 18px;
-          width: 18px; }
-    .user-login .user-login__body-container .user-login__sign-in {
-      margin: 15px; }
-    .user-login .user-login__body-container .user-login__sign-in-label {
-      padding: 5px 10px; }
+      font-size: 3rem;
+      padding: 15px; }
+  .user-login .user-login__header-container .user-login__secondary {
+    font-size: 18px;
+    text-align: center; }
+
+.user-login .user-login__body-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .user-login .user-login__body-container .user-login__select-wrapper {
+    min-width: 400px;
+    width: 80%; }
+    .user-login .user-login__body-container .user-login__select-wrapper .user-login__select {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+      .user-login .user-login__body-container .user-login__select-wrapper .user-login__select .user-login__avatar {
+        padding: 0 5px 0 0;
+        height: 18px;
+        width: 18px; }
+  .user-login .user-login__body-container .user-login__sign-in {
+    margin: 15px; }
+  .user-login .user-login__body-container .user-login__sign-in-label {
+    padding: 5px 10px; }
 
 .user-login__option {
   display: flex;
@@ -58,13 +60,11 @@
   .user-login__option .user-login__avatar {
     padding: 0 5px 0 0; }
 
-.leaderboard__wrapper {
-  margin: 25px; }
-  .leaderboard__wrapper .leaderboard-table__user-data {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .leaderboard__wrapper .leaderboard-table__user-data .leaderboard-table__avatar {
-      width: 40px;
-      height: 40px;
-      padding: 0 15px 0 0; }
+.leaderboard-table__user-data {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .leaderboard-table__user-data .leaderboard-table__avatar {
+    width: 40px;
+    height: 40px;
+    padding: 0 15px 0 0; }
