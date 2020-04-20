@@ -57,26 +57,28 @@ export const NewQuestion: React.FC = () => {
             </div>
             <Divider />
             <div className="question-form__body">
-                <TextField
-                    label="Option one"
-                    variant="outlined"
-                    onChange={(e) => handleSetValue(e, InputTarget.First)}
-                />
-                <Divider component="p" />
-                <p>
-                    <Typography
-                        color="textSecondary"
-                        display="block"
-                        variant="caption"
-                    >
-                        or
+                <div className="question-form__inputs">
+                    <TextField
+                        label="Option one"
+                        variant="outlined"
+                        onChange={(e) => handleSetValue(e, InputTarget.First)}
+                    />
+                    <Divider component="p" />
+                    <p className={'question-form__divider'}>
+                        <Typography
+                            color="textSecondary"
+                            display="block"
+                            variant="caption"
+                        >
+                            or
                     </Typography>
-                </p>
-                <TextField
-                    label="Option two"
-                    variant="outlined"
-                    onChange={(e) => handleSetValue(e, InputTarget.Second)}
-                />
+                    </p>
+                    <TextField
+                        label="Option two"
+                        variant="outlined"
+                        onChange={(e) => handleSetValue(e, InputTarget.Second)}
+                    />
+                </div>
                 <Button
                     classes={{
                         root: 'question-form__submit',

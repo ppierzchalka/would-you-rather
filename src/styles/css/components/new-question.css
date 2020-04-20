@@ -22,6 +22,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; }
+  .question-form__body .question-form__inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; }
+    .question-form__body .question-form__inputs .question-form__divider {
+      padding: 15px; }
   .question-form__body .question-form__submit {
     margin: 15px; }
   .question-form__body .question-form__submit-label {
