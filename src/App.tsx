@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { handleInitialData } from './actions/shared';
 import { Header } from './components/Header/Header';
+import { Main } from './components/Main/Main';
 import { UserLogin } from './components/UserLogin/UserLogin';
 import './styles/css/index.css';
 
@@ -23,7 +24,7 @@ export class AppInner extends Component<AppProps> {
                 <Header />
                 <Container maxWidth="md">
                     {this.props.authUser
-                        ? <p>app</p>
+                        ? <Main />
                         : <UserLogin />
                     }
                 </Container>
