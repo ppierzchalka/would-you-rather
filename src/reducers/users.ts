@@ -36,6 +36,17 @@ export const users = (
                 },
             };
         }
+        case QuestionsActionType.AddQuestion: {
+            const { question } = action;
+            const { author } = question;
+            return {
+                ...state,
+                [author]: {
+                    ...state[author],
+                    questions: [...state[author].questions, question.id]
+                },
+            };
+        }
         default:
             return state;
     }
