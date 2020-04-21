@@ -21,6 +21,7 @@ export type QuestionsListProps = {
 export const QuestionsList: React.FC<QuestionsListProps> = ({ questions }) => {
     return (
         <React.Fragment>
+            {questions.length === 0 && <p>No questions to answer...</p>}
             <List>
                 {questions.map(question => (
                     <ListItem key={question}>

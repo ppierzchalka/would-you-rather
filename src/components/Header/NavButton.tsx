@@ -24,7 +24,7 @@ export const NavButton: React.FC<NavButtonProps> = (props) => {
     switch (props.type) {
         case ButtonType.Link:
             return (
-                <NavLink to={props.path} exact>
+                <NavLink to={props.path} exact tabIndex={-1}>
                     <Button
                         variant="contained"
                         color="primary"

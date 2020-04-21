@@ -1,10 +1,6 @@
-@import './components/header';
 @import './components/main';
+@import './components/header';
 @import './components/user-login';
 @import './components/leaderboard';
 @import './components/new-question';
 @import './components/question-card';
-
-    a {
-        text-decoration: none;
-    }

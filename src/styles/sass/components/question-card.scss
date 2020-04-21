@@ -17,11 +17,19 @@
     .question-card__body-container {
         padding: 15px 20px;
         font-size: 1.5rem;
-        color: grey;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        &.question-card__body-container--poll {
+            flex-direction: row;
+            .question-card__divider {
+                margin: 25px;
+            }
+            .question-card__button {
+                max-width: 200px;
+            }
+        }
         .question-card__answer {
             color: black;
         }
@@ -38,6 +46,15 @@
         }
         .question-card__button-label {
             padding: 5px 10px;
+        }
+    }
+    .question-card__results-container {
+        text-align: center;
+        width: 100%;
+        .question-card__results-percentage {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3f51b5;
         }
     }
 }

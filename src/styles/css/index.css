@@ -1,3 +1,12 @@
+.main__wrapper {
+  margin: 25px; }
+
+.tabs-panel__content {
+  text-align: center; }
+
+a {
+  text-decoration: none; }
+
 .app-bar {
   flex-wrap: nowrap;
   justify-content: center;
@@ -8,9 +17,6 @@
     align-items: center; }
     .app-bar .app-bar__user .app-bar__avatar {
       margin: 0px 10px; }
-
-.main__wrapper {
-  margin: 25px; }
 
 .user-login .user-login__header-container {
   padding: 15px 20px; }
@@ -120,11 +126,16 @@
   .question-card__container .question-card__body-container {
     padding: 15px 20px;
     font-size: 1.5rem;
-    color: grey;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; }
+    .question-card__container .question-card__body-container.question-card__body-container--poll {
+      flex-direction: row; }
+      .question-card__container .question-card__body-container.question-card__body-container--poll .question-card__divider {
+        margin: 25px; }
+      .question-card__container .question-card__body-container.question-card__body-container--poll .question-card__button {
+        max-width: 200px; }
     .question-card__container .question-card__body-container .question-card__answer {
       color: black; }
     .question-card__container .question-card__body-container .question-card__divider {
@@ -137,6 +148,10 @@
       margin: 15px; }
     .question-card__container .question-card__button-container .question-card__button-label {
       padding: 5px 10px; }
-
-a {
-  text-decoration: none; }
+  .question-card__container .question-card__results-container {
+    text-align: center;
+    width: 100%; }
+    .question-card__container .question-card__results-container .question-card__results-percentage {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #3f51b5; }

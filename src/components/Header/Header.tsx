@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     const handleLogout = () => dispatch(removeAuthUser());
 
     return (
-        <AppBar position="static" classes={{ root: 'app-bar' }}>
+        <AppBar position="sticky" classes={{ root: 'app-bar' }}>
             <Toolbar>
                 <UserAvatar authUser={authUserData} />
                 {

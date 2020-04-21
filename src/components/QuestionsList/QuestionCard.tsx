@@ -46,7 +46,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ questionId }) => {
             </div>
             <Divider />
             <div className="question-card__button-container">
-                <Link to={`/questions/${question?.id}`}>
+                <Link to={`/questions/${question?.id}`} tabIndex={-1}>
                     <Button
                         variant="contained"
                         color="primary"
