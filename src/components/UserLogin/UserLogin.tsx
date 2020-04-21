@@ -11,7 +11,7 @@ export type UserLoginInnerProps = {
 }
 
 export const UserLoginInner: React.FC<UserLoginInnerProps> = ({ users, dispatch, authUser }) => {
-    const [user, setUser] = useState<string | null>(authUser);
+    const [user, setUser] = useState<string>(authUser ? authUser : '');
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         const value = e.target.value;

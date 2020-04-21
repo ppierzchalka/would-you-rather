@@ -2,8 +2,6 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center; }
-  .app-bar a {
-    text-decoration: none; }
   .app-bar .app-bar__user {
     margin: 0px 5px;
     display: flex;
@@ -104,3 +102,41 @@
     margin: 15px; }
   .question-form__body .question-form__submit-label {
     padding: 5px 10px; }
+
+.question-card__container {
+  width: 100%;
+  padding: 15px 20px; }
+  .question-card__container .question-card__header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .question-card__container .question-form__question {
+    text-align: center;
+    display: block;
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 15px; }
+  .question-card__container .question-card__body-container {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .question-card__container .question-card__body-container .question-card__answer {
+      color: black; }
+    .question-card__container .question-card__body-container .question-card__divider {
+      margin: 5px; }
+  .question-card__container .question-card__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .question-card__container .question-card__button-container .question-card__button {
+      margin: 15px; }
+    .question-card__container .question-card__button-container .question-card__button-label {
+      padding: 5px 10px; }
+
+a {
+  text-decoration: none; }

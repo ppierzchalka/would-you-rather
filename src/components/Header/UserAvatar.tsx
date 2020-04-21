@@ -12,7 +12,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({ authUser }) => {
             <Avatar
             classes={{ root: 'app-bar__avatar' }}
                 alt={authUser?.name ?? 'Guest'}
-                src={authUser?.avatarURL ?? 'avatars/guest.png'}
+                src={authUser?.avatarURL ?? '/avatars/guest.png'}
             />
             <Typography
             variant="subtitle1"
