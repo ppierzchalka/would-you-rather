@@ -7,7 +7,7 @@ const initialUserState: Users = {};
 export const users = (
     state: Users = initialUserState,
     action: UsersAction | QuestionsAction
-) => {
+): Users => {
     switch (action.type) {
         case UsersActionType.Receive:
             return {
@@ -21,18 +21,22 @@ export const users = (
                 ...state,
                 [authedUser]: {
                     ...user,
-                    [qid]: answer,
+                    answers: {
+                        ...state[authedUser].answers,
+                        [qid]: answer,
+                    },
                 },
             };
         }
         case QuestionsActionType.RemoveAnswer: {
             const { qid, authedUser } = action.selectedAnswer;
             const user = state[authedUser];
+            const { [qid]: toRemove, ...rest } = user.answers;
             return {
                 ...state,
                 [authedUser]: {
                     ...user,
-                    [qid]: undefined,
+                    answers: rest,
                 },
             };
         }

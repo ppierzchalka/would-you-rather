@@ -6,7 +6,7 @@ const initialQuestionsState: Questions = {};
 export const questions = (
     state: Questions = initialQuestionsState,
     action: QuestionsAction
-) => {
+): Questions => {
     switch (action.type) {
         case QuestionsActionType.ReceiveQuestions:
             return {

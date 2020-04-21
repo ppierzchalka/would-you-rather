@@ -10,12 +10,12 @@ enum QuestionsState {
 }
 
 export type PartitionedQuestions = {
-    answered: string[],
-    unanswered: string[]
+    answered: Question[],
+    unanswered: Question[]
 };
 
 export type QuestionsListProps = {
-    questions: string[];
+    questions: Question[];
 }
 
 export const QuestionsList: React.FC<QuestionsListProps> = ({ questions }) => {
@@ -24,8 +24,8 @@ export const QuestionsList: React.FC<QuestionsListProps> = ({ questions }) => {
             {questions.length === 0 && <p>No questions to answer...</p>}
             <List>
                 {questions.map(question => (
-                    <ListItem key={question}>
-                        <QuestionCard questionId={question}/>
+                    <ListItem key={question.id}>
+                        <QuestionCard questionId={question.id} />
                     </ListItem>
                 ))}
             </List>
@@ -34,15 +34,15 @@ export const QuestionsList: React.FC<QuestionsListProps> = ({ questions }) => {
 }
 
 const buildMapStateToProps = (questionsState: QuestionsState) => (state: { questions: Questions, authUser: string }) => {
-    const { answered, unanswered } = Object.entries(state.questions).reduce(
-        (acc: PartitionedQuestions, [id, question]: [string, Question]) => {
+    const { answered, unanswered } = Object.values(state.questions).reduce(
+        (acc: PartitionedQuestions, question: Question) => {
             const { optionOne, optionTwo } = question;
             if (optionOne.votes.includes(state.authUser) || optionTwo.votes.includes(state.authUser)) {
                 return ({
                     ...acc,
                     answered: [
                         ...acc.answered,
-                        id
+                        question
                     ]
                 })
             }
@@ -50,7 +50,7 @@ const buildMapStateToProps = (questionsState: QuestionsState) => (state: { quest
                 ...acc,
                 unanswered: [
                     ...acc.unanswered,
-                    id
+                    question
                 ]
             });
         }, { answered: [], unanswered: [] }
@@ -59,11 +59,11 @@ const buildMapStateToProps = (questionsState: QuestionsState) => (state: { quest
     switch (questionsState) {
         case QuestionsState.Answered:
             return {
-                questions: answered
+                questions: answered.sort((a, b) => (b.timestamp - a.timestamp))
             }
         case QuestionsState.Unanswered:
             return {
-                questions: unanswered
+                questions: unanswered.sort((a, b) => (b.timestamp - a.timestamp))
             }
     }
 }

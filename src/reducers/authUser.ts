@@ -6,7 +6,7 @@ const defaultAuthUserState: AuthUserState = null;
 export const authUser = (
            state: AuthUserState = defaultAuthUserState,
            action: AuthUserAction
-       ) => {
+       ): AuthUserState => {
            switch (action.type) {
                case AuthUserActionType.Select:
                case AuthUserActionType.Remove:
